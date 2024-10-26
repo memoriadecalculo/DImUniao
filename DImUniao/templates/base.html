@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt_BR">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>{{ title }}{% block titulo %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'base.css' %}" type="text/css" />
+  <link rel="shortcut icon" href="{% static 'logo.png' %}" type="image/png" />
+  {{ form.media }}
+  <script src="{% static 'base.js' %}"></script>
+  {% block extend_head %}
+  {% endblock %}
+</head>
+<body onload='initialize()'>
+  <table class="CORPO">
+    <tr class="CONTEUDO">
+      <td>{% block conteudo %}{% endblock %}</td>
+    </tr>
+    <tr class="RODAPE">
+      <td>Desde 2024{% block rodape %}{% endblock %}</td>
+    </tr>
+  </table>
+</body>
+</html>

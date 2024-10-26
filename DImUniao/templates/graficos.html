@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+  <div id="container" style="width: 75%;">
+    <canvas id="graficos" data-url="{% url 'graficosjson' %}"></canvas>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    $(function () {
+
+      var $graficos = $("#graficos");
+      $.ajax({
+        url: $graficos.data("url"),
+        success: function (data) {
+
+          var ctx = $graficos[0].getContext("2d");
+
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'Mês',
+                fill: 'false',
+                data: data.data
+              }]     
+            },
+            options: {
+              responsive: true,
+              legend: {
+                position: 'bottom',
+              },
+              title: {
+                display: true,
+                text: 'RIPU Histórico'
+              }
+            }
+          });
+
+        }
+      });
+
+    });
+
+  </script>
+
+{% endblock %}

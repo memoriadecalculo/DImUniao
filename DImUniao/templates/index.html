@@ -1,0 +1,21 @@
+{% extends 'form.html' %}
+{% block subtitulo %}DEPRECIAÇÃO DOS IMÓVEIS DA UNIÃO{% endblock %}
+
+{% block proposito %}
+Gerar gráfico histórico da depreciação de um imóvel identificado pelo RIP Utilização.
+{% endblock %}
+
+{% block entrada %}
+<p>Para utilizar este formulário digite o RIP Utilização na caixa de texto abaixo
+e clique em "Gerar Gráfico".</p>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary" type=submit value="Gerar Gráfico">
+</form>
+{% endblock %}
+
+{% block resultados %}
+
+{% endblock %}
